@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Clock SVG</title>
+    <style>
+        .rotating-shape {
+            transform-origin: 100px 100px; /* Set rotation center */
+        }
+    </style>
+</head>
+<body>
+    <!-- Embed the SVG -->
+    <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <path id="background" class="rotating-shape" d="
+        M 100,200
+        C 40,200 0,140 0,90
+        C 0,40 40,0 100,0
+        C 160,0 200,40 200,90
+        C 200,140 160,200 100,200
+        Z
+      " 
+      fill="grey" 
+      fill-rule="evenodd"/>
+
+      <path id="minute-handle" class="rotating-shape" d="
+        M 100,175
+        C 55,175 25,130 25,87.5
+        C 25,55 55,25 100,25
+        C 145,25 175,55 175,87.5
+        C 175,130 145,175 100,175
+        Z
+        M 100,31.25
+        A 3.125,3.125 0 1,0 100,46.25
+        A 3.125,3.125 0 1,0 100,31.25
+        Z
+      " 
+      fill="black" 
+      fill-rule="evenodd"/>
+
+      <path id="hour-handle" class="rotating-shape" d="
+        M 100,150
+        C 70,150 50,120 50,95
+        C 50,70 70,50 100,50
+        C 130,50 150,70 150,95
+        C 150,120 130,150 100,150
+        Z
+        M 100,65
+        A 12.5,12.5 0 1,0 100,90
+        A 12.5,12.5 0 1,0 100,65
+        Z
+      " fill="white" fill-rule="evenodd" />
+    </svg>
+
+    <!-- External script to rotate the handles -->
+    <script>
+        (function() {
+            var now = new Date();
+            var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            var elapsedSeconds = (now - midnight) / 1000; // Seconds since midnight
+
+            var durationHour = 43200; // 12 hours in seconds (360 degrees)
+            var durationMinute = 3600; // 1 hour in seconds (360 degrees)
+
+            // Degrees per second
+            var anglePerSecondHour = 360 / durationHour; 
+            var anglePerSecondMinute = 360 / durationMinute; 
+
+            // Calculate the current angle based on elapsed time
+            var currentAngleHour = (elapsedSeconds % durationHour) * anglePerSecondHour;
+            var currentAngleMinute = (elapsedSeconds % durationMinute) * anglePerSecondMinute;
+
+            // Apply the rotation directly to the hour and minute handles
+            var hourHandle = document.getElementById('hour-handle');
+            var minuteHandle = document.getElementById('minute-handle');
+
+            // Use transform to rotate the elements
+            hourHandle.style.transform = 'rotate(' + currentAngleHour + 'deg)';
+            minuteHandle.style.transform = 'rotate(' + currentAngleMinute + 'deg)';
+        })();
+    </script>
+</body>
+</html>
