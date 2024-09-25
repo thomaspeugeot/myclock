@@ -4,51 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Clock SVG</title>
+    <meta http-equiv="refresh" content="30"> <!-- Page will reload every 30 seconds -->
     <style>
         .rotating-shape {
-            transform-origin: 300px 300px; /* Set rotation center for the scaled-up size */
+            transform-origin: 200px 200px; /* Set rotation center for the scaled-up size */
         }
     </style>
 </head>
 <body>
     <!-- Embed the SVG with updated width and height -->
-    <svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+    <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
       <path id="background" class="rotating-shape" d="
-        M 300,600
-        C 120,600 0,420 0,270
-        C 0,120 120,0 300,0
-        C 480,0 600,120 600,270
-        C 600,420 480,600 300,600
+        M 200,400
+        C 80,400 0,280 0,180
+        C 0,80 80,0 200,0
+        C 320,0 400,80 400,180
+        C 400,280 320,400 200,400
         Z
       " 
       fill="grey" 
       fill-rule="evenodd"/>
 
       <path id="minute-handle" class="rotating-shape" d="
-        M 300,525
-        C 165,525 75,390 75,262.5
-        C 75,165 165,75 300,75
-        C 435,75 525,165 525,262.5
-        C 525,390 435,525 300,525
+        M 200,350
+        C 110,350 50,260 50,175
+        C 50,110 110,50 200,50
+        C 290,50 350,110 350,175
+        C 350,260 290,350 200,350
         Z
-        M 300,93.75
-        A 9.375,9.375 0 1,0 300,138.75
-        A 9.375,9.375 0 1,0 300,93.75
+        M 200,62.5
+        A 6.25,6.25 0 1,0 200,93.75
+        A 6.25,6.25 0 1,0 200,62.5
         Z
       " 
       fill="black" 
       fill-rule="evenodd"/>
 
       <path id="hour-handle" class="rotating-shape" d="
-        M 300,450
-        C 210,450 150,360 150,285
-        C 150,210 210,150 300,150
-        C 390,150 450,210 450,285
-        C 450,360 390,450 300,450
+        M 200,300
+        C 140,300 100,240 100,190
+        C 100,140 140,100 200,100
+        C 260,100 300,140 300,190
+        C 300,240 260,300 200,300
         Z
-        M 300,195
-        A 37.5,37.5 0 1,0 300,270
-        A 37.5,37.5 0 1,0 300,195
+        M 200,130
+        A 25,25 0 1,0 200,180
+        A 25,25 0 1,0 200,130
         Z
       " fill="white" fill-rule="evenodd" />
     </svg>
